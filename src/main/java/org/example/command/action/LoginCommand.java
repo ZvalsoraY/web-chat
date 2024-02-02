@@ -32,7 +32,6 @@ public class LoginCommand implements Command {
         /*if (user.isEmpty()) {
             return new RedirectResult(COMMAND_SHOW_LOGIN_PAGE);
         }*/
-
         if (user.isPresent() && user.get().getPassword().equals(password)) {
             request.getSession(true).setAttribute("user", user.get());
             return new RedirectResult(COMMAND_SHOW_CHAT_PAGE);

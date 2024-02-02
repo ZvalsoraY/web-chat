@@ -13,11 +13,11 @@
         <div align="center">
             <c:forEach items="${messages}" var="message">
                 <tr>
-                    <td>${message.sender}</td>
-                    <td>${message.message}</td>
+                    <td>"${message.sender}"</td>
+                    <td>"${message.message}"</td>
                 </tr>
             </c:forEach>
-            <form action="chat" method="post">
+            <form action="chat" method="post" action="chat?command=send_message">
                 <input type="text" name="message" placeholder="Message text">
                 <br/>
                 <button type="submit">Send</button>

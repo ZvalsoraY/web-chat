@@ -7,9 +7,12 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
 
+import static org.example.Resources.COMMAND_SHOW_LOGIN_PAGE;
 import static org.example.Resources.PAGE_LOGIN;
 
 public class LoginFilter implements Filter {
@@ -24,14 +27,22 @@ public class LoginFilter implements Filter {
         // Ваша релизация фильтра входа пользователя на сайт
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 
-        Optional<Object> user = Optional.ofNullable(httpServletRequest.getSession().getAttribute("user"));
+        /*Optional<Object> user = Optional.ofNullable(httpServletRequest.getSession().getAttribute("user"));
 
         if (user.isEmpty() || !request.getParameter("command").equals("LOGIN")) { // Проверка, что пользователь авторизован (необходимо реализовать!!!)
             httpServletRequest.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
             return;
-        }
+        }*/
+        HttpSession session = httpServletRequest.getSession();
 
+        if (session.getAttribute("user") == null) {
+            if (!request.getParameter("command").equals("login")) {
+                httpServletRequest.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+                return;
+            }
+        }
         filterChain.doFilter(request, response);
+
     }
 
     @Override
