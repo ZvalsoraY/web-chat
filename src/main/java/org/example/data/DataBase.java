@@ -32,7 +32,10 @@ public final class DataBase {
     }
 
     public static List<Message> getMessages() {
-        return new ArrayList<>(messages);
+        return messages;
+    }
+    public static List<User> getUsers() {
+        return USERS;
     }
 
     public static void addMessage(Message message) {

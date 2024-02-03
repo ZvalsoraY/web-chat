@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import static org.example.Resources.COMMAND_SHOW_CHAT_PAGE;
@@ -33,6 +34,7 @@ public class LoginCommand implements Command {
             return new RedirectResult(COMMAND_SHOW_LOGIN_PAGE);
         }*/
         if (user.isPresent() && user.get().getPassword().equals(password)) {
+            user.get().setOnline(true);
             request.getSession(true).setAttribute("user", user.get());
             return new RedirectResult(COMMAND_SHOW_CHAT_PAGE);
         } else {

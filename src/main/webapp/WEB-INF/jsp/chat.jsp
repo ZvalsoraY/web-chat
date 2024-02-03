@@ -11,17 +11,35 @@
             Hello ${user.name}, enjoy you stay.
         <hr/>
         <div align="center">
-            <c:forEach items="${messages}" var="message">
-                <tr>
-                    <td>"${message.sender}"</td>
-                    <td>"${message.message}"</td>
-                </tr>
-            </c:forEach>
-            <form method="post" action="chat?command=send_message">
-                <input type="text" name="message" placeholder="Message text">
-                <br/>
-                <button type="submit">Send</button>
-            </form>
+            <h1>Список пользователей</h1>
+                    <table>
+                        <tr>
+                            <th>login</th>
+                            <th>password</th>
+                            <th>Online</th>
+                        </tr>
+                        <c:forEach items="${users}" var="user">
+                            <tr>
+                                <td>${user.login}</td>
+                                <td>${user.password}</td>
+                                <td>${user.isOnline()}</td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+
+            <div align="center">
+                        <c:forEach var="message" items="${messages}">
+                            <tr>
+                                <td>${message.sender} send: "${message.message}"</td>
+                            </tr>
+                        </c:forEach>
+
+                        <form method="post" action="chat?command=send_message">
+                            <input type="text" name="message" placeholder="Message text">
+                            <br/>
+                            <button type="submit">Send</button>
+                        </form>
+            </div>
 
             <a href="chat?command=logout">Выход</a>
 
