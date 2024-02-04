@@ -40,6 +40,10 @@
                             <button type="submit">Send</button>
                         </form>
             </div>
+            </form>
+                         <c:if test="${user.userType == 'ADMIN'}">
+                            <a href="chat?command=SHOW_ADMIN_SETTINGS_PAGE">Admin settings page</a>
+                         </c:if>
 
             <a href="chat?command=logout">Выход</a>
 
