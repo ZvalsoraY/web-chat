@@ -21,29 +21,22 @@
             </tr>
             <ul class="user-list" name="users-list">
                 <c:forEach items="${users}" var="userL">
-                <tr>
-                                        <td>${userL.login}</td>
-                                        <td>${userL.password}</td>
-                                        <td>${userL.isReadOnly()}</td>
-                                        <td>
-                                         <form method="POST" action="chat?command=ban">
-                                         <input type="hidden" name="userLLogin" value="${userL.login}">
-                                         <button type="submit">Enable/Disable</button>
-
-                                         </form>
-                                    </tr>
-                                </c:forEach>
+                    <tr>
+                        <td>${userL.login}</td>
+                        <td>${userL.password}</td>
+                        <td>${userL.isReadOnly()}</td>
+                        <td>
+                            <form method="POST" action="chat?command=ban">
+                                <input type="hidden" name="userLLogin" value="${userL.login}">
+                                <button type="submit">Enable/Disable</button>
+                            </form>
+                    </tr>
+                </c:forEach>
                 </ul>
          </table>
 
-
-        <div align="center">
-            <a href="chat?command=logout">Exit</a>
-            <a href="chat?command=show_chat_page">Return chat list</a>
-            <!-- Admin Page -->
-
-        </div>
-
-        <a href="chat?command=logout">Выход</a>
+        <a href="chat?command=show_chat_page">Return chat list</a>
+        <br/>
+        <a href="chat?command=logout">Exit</a>
     </body>
 </html>
