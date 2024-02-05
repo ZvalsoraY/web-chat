@@ -1,7 +1,7 @@
 package org.example.data;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,8 +10,9 @@ import static org.example.data.UserType.CLIENT;
 
 public final class DataBase {
 
-    private final static List<User> USERS = new ArrayList<>();
-    private static List<Message> messages = new ArrayList<>();
+    private static List<User> USERS = new ArrayList<>();
+    private static List<Message> messages = Collections.synchronizedList(new ArrayList<>());
+
     private DataBase() {
     }
 
@@ -30,6 +31,7 @@ public final class DataBase {
     public static List<Message> getMessages() {
         return messages;
     }
+
     public static List<User> getUsers() {
         return USERS;
     }
@@ -37,7 +39,9 @@ public final class DataBase {
     public static void addMessage(Message message) {
         messages.add(message);
     }
+
     public static void close() {
         System.out.println("Закрытие соединения с Базой Данных");
     }
+
 }

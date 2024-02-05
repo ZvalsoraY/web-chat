@@ -39,10 +39,13 @@ public class User {
     public void setOnline(boolean online) {
         this.online = online;
     }
+
     public boolean isReadOnly() {
         return readOnly;
     }
+
     public void setReadOnly(boolean readOnly) {
         this.readOnly = readOnly;
     }
+
 }

@@ -11,7 +11,7 @@
             Hello ${user.name}, enjoy you stay.
         <hr/>
         <div align="center">
-            <h1>Список пользователей</h1>
+            <h1>Users List</h1>
                     <table>
                         <tr>
                             <th>login</th>
@@ -26,30 +26,28 @@
                             </tr>
                         </c:forEach>
                     </table>
-
+            <h1>Chat</h1>
             <div align="center">
-                        <c:forEach var="message" items="${messages}">
-                            <tr>
-                                <td>${message.sender} send: "${message.message}"</td>
-                                <br/>
-                            </tr>
-                        </c:forEach>
-
+                <c:forEach var="message" items="${messages}">
+                    <tr>
+                        <td>${message.sender} send: "${message.message}"</td>
+                        <br/>
+                    </tr>
+                </c:forEach>
+                    <c:if test="${user.readOnly == false}">
                         <form method="post" action="chat?command=send_message">
                             <input type="text" name="message" placeholder="Message text">
                             <br/>
                             <button type="submit">Send</button>
-                        </form>
+                         </form>
+                    </c:if>
             </div>
-            </form>
-                         <c:if test="${user.userType == 'ADMIN'}">
-                            <a href="chat?command=SHOW_ADMIN_SETTINGS_PAGE">Admin settings page</a>
-                         </c:if>
-
-            <a href="chat?command=logout">Выход</a>
-
+                <c:if test="${user.userType == 'ADMIN'}">
+                    <a href="chat?command=SHOW_ADMIN_SETTINGS_PAGE">Admin settings page</a>
+                </c:if>
+            <br/>
+            <a href="chat?command=logout">Exit</a>
             <!-- Главная страница Чата -->
-
         </div>
     </body>
 </html>

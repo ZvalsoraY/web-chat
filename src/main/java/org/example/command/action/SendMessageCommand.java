@@ -4,7 +4,7 @@ import org.example.command.Command;
 import org.example.data.DataBase;
 import org.example.data.Message;
 import org.example.data.User;
-import org.example.result.ForwardResult;
+import org.example.result.RedirectResult;
 import org.example.result.Result;
 
 import javax.servlet.ServletException;
@@ -20,6 +20,6 @@ public class SendMessageCommand  implements Command {
         User user = (User) request.getSession().getAttribute("user");
         DataBase.addMessage(new Message(user.getName(),  request.getParameter("message")));
         System.out.println(user.getName() + " SEND " + request.getParameter("message"));
-        return new ForwardResult(COMMAND_SHOW_CHAT_PAGE);
+        return new RedirectResult(COMMAND_SHOW_CHAT_PAGE);
     }
 }

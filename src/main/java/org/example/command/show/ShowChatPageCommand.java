@@ -5,6 +5,7 @@ import org.example.data.DataBase;
 import org.example.data.Message;
 import org.example.data.User;
 import org.example.result.ForwardResult;
+import org.example.result.RedirectResult;
 import org.example.result.Result;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,8 @@ public class ShowChatPageCommand implements Command {
         request.setAttribute("users", users);
         request.setAttribute("messages", messages);
         System.out.println(request.getSession(false).getAttribute("user"));
+
+        response.setIntHeader("Refresh", 10);
         return new ForwardResult(PAGE_CHAT);
     }
 }

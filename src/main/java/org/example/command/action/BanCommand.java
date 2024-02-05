@@ -21,11 +21,11 @@ public class BanCommand  implements Command {
 
     @Override
     public Result execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         String loginL = request.getParameter("userLLogin");
+        String loginL = request.getParameter("userLLogin");
         System.out.println(loginL);
         Optional<User> user = DataBase.findByLogin(loginL);
-        if (user.isPresent()){
-            if (user.get().isReadOnly()){
+        if (user.isPresent()) {
+            if (user.get().isReadOnly()) {
                 user.get().setReadOnly(false);
             } else {
                 user.get().setReadOnly(true);

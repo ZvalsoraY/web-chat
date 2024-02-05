@@ -2,7 +2,13 @@ package org.example.filter;
 
 import org.example.data.User;
 
-import javax.servlet.*;
+//import javax.servlet.*;
+import javax.servlet.ServletException;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletResponse;
+import javax.servlet.ServletRequest;
+import javax.servlet.Filter;
+import javax.servlet.FilterConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,7 +29,7 @@ public class AdminFilter implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
         HttpSession session = httpServletRequest.getSession();
-        if (request.getParameter("command").equals("SHOW_ADMIN_SETTINGS_PAGE")){
+        if (request.getParameter("command").equals("SHOW_ADMIN_SETTINGS_PAGE")) {
             User user = (User) session.getAttribute("user");
             if (user.getUserType() != ADMIN) {
                 httpServletResponse.sendRedirect(COMMAND_SHOW_CHAT_PAGE);
