@@ -31,6 +31,7 @@
                         <c:forEach var="message" items="${messages}">
                             <tr>
                                 <td>${message.sender} send: "${message.message}"</td>
+                                <br/>
                             </tr>
                         </c:forEach>
 

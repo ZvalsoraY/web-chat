@@ -26,13 +26,6 @@ public class LoginFilter implements Filter {
 
         // Ваша релизация фильтра входа пользователя на сайт
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-
-        /*Optional<Object> user = Optional.ofNullable(httpServletRequest.getSession().getAttribute("user"));
-
-        if (user.isEmpty() || !request.getParameter("command").equals("LOGIN")) { // Проверка, что пользователь авторизован (необходимо реализовать!!!)
-            httpServletRequest.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
-            return;
-        }*/
         HttpSession session = httpServletRequest.getSession();
 
         if (session.getAttribute("user") == null) {
@@ -42,7 +35,6 @@ public class LoginFilter implements Filter {
             }
         }
         filterChain.doFilter(request, response);
-
     }
 
     @Override
