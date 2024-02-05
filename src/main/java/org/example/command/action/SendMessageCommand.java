@@ -19,9 +19,7 @@ public class SendMessageCommand  implements Command {
     public Result execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
         DataBase.addMessage(new Message(user.getName(),  request.getParameter("message")));
-
         System.out.println(user.getName() + " SEND " + request.getParameter("message"));
-
         return new ForwardResult(COMMAND_SHOW_CHAT_PAGE);
     }
 }

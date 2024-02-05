@@ -23,26 +23,16 @@ public class LoginCommand implements Command {
     public Result execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // Ваша реализация выполнения входа в Чат
-
         String login = request.getParameter("loginInput");
         String password = request.getParameter("passwordInput");
         System.out.println("login = " + login + " password = " + password);
-
         Optional<User> user = DataBase.findByLogin(login);
-
-        /*if (user.isEmpty()) {
-            return new RedirectResult(COMMAND_SHOW_LOGIN_PAGE);
-        }*/
         if (user.isPresent() && user.get().getPassword().equals(password)) {
             user.get().setOnline(true);
             request.getSession(true).setAttribute("user", user.get());
             return new RedirectResult(COMMAND_SHOW_CHAT_PAGE);
         } else {
-            //request.getServletContext().getRequestDispatcher(COMMAND_SHOW_CHAT_PAGE).forward(request, response);
-            //return new RedirectResult(COMMAND_SHOW_CHAT_PAGE);
             return new RedirectResult(COMMAND_SHOW_LOGIN_PAGE);
         }
-        //return new RedirectResult(COMMAND_SHOW_CHAT_PAGE);
-        //return new RedirectResult(COMMAND_SHOW_CHAT_PAGE);
     }
 }

@@ -8,10 +8,7 @@ public final class Resources {
 
     public static final String COMMAND_SHOW_LOGIN_PAGE = "chat?command=show_login_page";
     public static final String COMMAND_SHOW_CHAT_PAGE = "chat?command=show_chat_page";
-
-    public static final String COMMAND_SEND_MESSAGE = "chat?command=send_message";
     public static final String COMMAND_SHOW_ADMIN_SETTINGS_PAGE = "chat?command=show_admin_settings_page";
-
     private Resources() {
     }
 }

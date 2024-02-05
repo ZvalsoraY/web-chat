@@ -23,11 +23,9 @@ public class LoginFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
-
         // Ваша релизация фильтра входа пользователя на сайт
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpSession session = httpServletRequest.getSession();
-
         if (session.getAttribute("user") == null) {
             if (!request.getParameter("command").equals("login")) {
                 httpServletRequest.getRequestDispatcher(PAGE_LOGIN).forward(request, response);

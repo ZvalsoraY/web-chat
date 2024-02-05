@@ -12,14 +12,6 @@ public final class DataBase {
 
     private final static List<User> USERS = new ArrayList<>();
     private static List<Message> messages = new ArrayList<>();
-
-    static {
-        USERS.add(new User("Admin", "Admin", "Admin", ADMIN));
-        USERS.add(new User("admin", "admin", "admin", ADMIN));
-        USERS.add(new User("User1", "User1", "User1", CLIENT));
-        USERS.add(new User("User2", "User2", "User2", CLIENT));
-    }
-
     private DataBase() {
     }
 
@@ -29,6 +21,10 @@ public final class DataBase {
 
     public static void init() {
         System.out.println("Установка соединения с Базой Данных");
+        USERS.add(new User("Admin", "Admin", "Admin", ADMIN));
+        USERS.add(new User("admin", "admin", "admin", ADMIN));
+        USERS.add(new User("User1", "User1", "User1", CLIENT));
+        USERS.add(new User("User2", "User2", "User2", CLIENT));
     }
 
     public static List<Message> getMessages() {

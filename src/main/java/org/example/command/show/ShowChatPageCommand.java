@@ -15,18 +15,14 @@ import java.util.List;
 import static org.example.Resources.PAGE_CHAT;
 
 public class ShowChatPageCommand implements Command {
-
     @Override
     public Result execute(HttpServletRequest request, HttpServletResponse response) {
-        /*ServletContext context = config.getServletContext();
-        context.setAttribute("users", DataBase.getUsers());*/
         // Ваша реализация наполнения данными главной страницы чата
         List<User> users = DataBase.getUsers();
         List<Message> messages = DataBase.getMessages();
         request.setAttribute("users", users);
         request.setAttribute("messages", messages);
         System.out.println(request.getSession(false).getAttribute("user"));
-
         return new ForwardResult(PAGE_CHAT);
     }
 }

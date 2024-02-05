@@ -29,9 +29,7 @@ public class AdminFilter implements Filter {
                 httpServletResponse.sendRedirect(COMMAND_SHOW_CHAT_PAGE);
             }
         }
-
         filterChain.doFilter(request, response);
-
     }
 
     @Override

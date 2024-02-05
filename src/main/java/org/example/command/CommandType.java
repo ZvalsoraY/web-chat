@@ -18,8 +18,6 @@ public enum CommandType {
     SHOW_LOGIN_PAGE(new ShowLoginPageCommand()),
     SEND_MESSAGE(new SendMessageCommand()),
     SHOW_ADMIN_SETTINGS_PAGE(new ShowAdminSettingsCommand());
-
-
     private final Command command;
 
     CommandType(Command command) {

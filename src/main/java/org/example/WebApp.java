@@ -17,29 +17,18 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class WebApp extends HttpServlet {
-    //private String login;
-    //private User user;
-    private DataBase dataBase;
-
     @Override
     public void init(/*ServletConfig config*/) {
         DataBase.init();
-        /*ServletContext context = config.getServletContext();
-        context.setAttribute("users", DataBase.getUsers());*/
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //request.setAttribute("user", this.login);
-        //request.setAttribute("user", user.getName());
         handleRequest(request, response);
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //this.login = request.getParameter("loginInput");
-        //request.setAttribute("user", user);
         handleRequest(request, response);
     }
 
@@ -47,9 +36,6 @@ public class WebApp extends HttpServlet {
 
         Command command = defineCommand(request);
         Result result = command.execute(request, response);
-
-        //request.setAttribute("user", this.login);
-        /*request.getRequestDispatcher(resourceName).forward(request,response);*/
 
         String resourceName = result.getResource();
         switch (result.getResponseType()) {
