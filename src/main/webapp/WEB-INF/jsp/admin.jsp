@@ -4,8 +4,9 @@
 <html>
     <link rel="icon" href="data:,">
     <head>
-        <title>Admin</title>
+        <title>Admin page</title>
     </head>
+
     <body>
         <hr/>
             Hello ${user.name}, enjoy you stay.
@@ -16,24 +17,23 @@
                 <th>Login</th>
                 <th>Password</th>
                 <th>Read Only</th>
-                <th>Select BAN</th>
+                <th>Write mode</th>
             </tr>
-                <c:forEach items="${users}" var="user">
+            <ul class="user-list" name="users-list">
+                <c:forEach items="${users}" var="userL">
                 <tr>
-                                        <td>${user.login}</td>
-                                        <td>${user.password}</td>
-                                        <td>${user.isReadOnly()}</td>
+                                        <td>${userL.login}</td>
+                                        <td>${userL.password}</td>
+                                        <td>${userL.isReadOnly()}</td>
                                         <td>
-                                         <form method="POST" action="chat?command=BAN">
-                                         <input id="userLogin" type="text" type="hidden" name="userLogin" value="${user.login}">
-                                        <c:if test="${user.readOnly}">
-                                                                <button type="submit">Can Write</button>
-                                                            </c:if>
-                                                            <c:if test="${!user.readOnly}">
-                                                                 <button type="submit">ReadOnly</button>
-                                                            </c:if ></td>
+                                         <form method="POST" action="chat?command=ban">
+                                         <input type="hidden" name="userLLogin" value="${userL.login}">
+                                         <button type="submit">Enable/Disable</button>
+
+                                         </form>
                                     </tr>
                                 </c:forEach>
+                </ul>
          </table>
 
 
